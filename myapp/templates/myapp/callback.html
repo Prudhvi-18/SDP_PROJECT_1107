@@ -1,17 +1,47 @@
 {% extends 'myapp/base.html' %}
 {% block content %}
-<div class="text-center" style="margin-top:20%">
-    {% if status == "Success" %}
-    <h2>THANK YOU YOUR PAYMENT HAS BEEN RECEIVED</h2>
-    Name:prasanth <br>
-    From:VIJAWADA <br>
-    Destination:RAJAHMUNDRY <br>
-    Seat no:27 <br>
-    Amount:250 <br>
-    payment id:220006985FGDF <br>
-
-    {% else %}
-    <h2>SORRY, YOUR PAYMENT HAS BEEN FAILED</h2>
-    {% endif %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body text-center">
+                    {% if status == "Success" %}
+                    <h2 class="card-title">THANK YOU YOUR PAYMENT HAS BEEN RECEIVED</h2>
+                    <p class="card-text">
+                        Name: Prasanth <br>
+                        From: Vijayawada <br>
+                        Destination: Rajahmundry <br>
+                        Seat no: 27 <br>
+                        Amount: 250 <br>
+                        Payment ID: 220006985FGDF
+                    </p>
+                    <a href="#" class="btn btn-primary" onclick="downloadDetails()">Download Details</a>
+                    {% else %}
+                    <h2 class="card-title">SORRY, YOUR PAYMENT HAS BEEN FAILED</h2>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    function downloadDetails() {
+        // Create a text file with the details
+        const details = `Name: Prasanth
+        From: Vijayawada
+        Destination: Rajahmundry
+        Seat no: 27
+        Amount: 250
+        Payment ID: 220006985FGDF`;
+
+        const blob = new Blob([details], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = 'payment_details.txt';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+</script>
 {% endblock %}
