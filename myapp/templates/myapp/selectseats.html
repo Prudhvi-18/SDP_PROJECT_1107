@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Select seats for your bus</title>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Open Sans', sans-serif;
+        }
+        body {
+          height: 100vh;
+          background-color: #000;
+          background-image: url('https://e1.pxfuel.com/desktop-wallpaper/994/947/desktop-wallpaper-mountain-monochrome-snow-dark-mountain.jpg');
+          background-size: cover;
+          background-position: center;
+        }
+        header {
+          position: relative;
+          padding: 0 2rem;
+        }
+        .navbar {
+          width: 100%;
+          height: 80px;
+          max-width: 1400px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .navbar a {
+          text-decoration: none;
+        }
+        .navbar .logo {
+          font-size: 1rem;
+          font-weight: bold;
+          color: #fff;
+          cursor: pointer;
+        }
+        section#hero {
+          height: calc(100vh - 150px);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: #fff;
+        }
+        .page {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        h1 {
+          color: white;
+          text-align: center;
+        }
+        .bus {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 20px auto;
+          max-width: 300px;
+          padding: 20px 20px 20px 20px;
+          background: white;
+          border-radius: 15px;
+        }
+        ol {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .seats {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+        }
+        .seat {
+          display: flex;
+          flex: 0 0 14.28%;
+          padding: 5px;
+          position: relative;
+        }
+        .seat label {
+          display: block;
+          position: relative;
+          width: 40px;
+          text-align: center;
+          font-size: 14px;
+          font-weight: bolder;
+          line-height: 2rem;
+          padding: 4px 0;
+          background: #ccc;
+          border-radius: 5px;
+          color: black;
+        }
+        .seat label:hover {
+          cursor: pointer;
+          box-shadow: 0 0 0px 2px orange;
+        }
+        .seat input[type=checkbox] {
+          position: absolute;
+        }
+        .seat input[type=checkbox]:checked + label {
+          background: orange;
+        }
+        .gap {
+          display: flex;
+          flex: 0 0 14.28%;
+          padding: 5px;
+          position: relative;
+        }
+        .gap label {
+          display: block;
+          position: relative;
+          width: 40px;
+          text-align: center;
+          font-size: 14px;
+          font-weight: bolder;
+          line-height: 1.5rem;
+          padding: 4px 0;
+          background: transparent;
+          border-radius: 5px;
+          color: black;
+        }
+        .btn {
+           width: 280px;
+           height: 45px;
+           background: orange;
+           border: none;
+           outline: none;
+           border-radius: 40px;
+           box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+           cursor: pointer;
+           font-size: 16px;
+           color: #fff;
+           font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="{% url 'findbus' %}"><div class="logo">back</div></a>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <form action="{% url '' %}">
+                <div class="page">
+                <h1>Please select your seats</h1>
+                <div class="bus">
+                    <ol>
+                        <li>
+                            <ol class="seats">
+                                <li class="seat">
+                                    <input type="checkbox" id="31">
+                                    <label for="31">31</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="32">
+                                    <label for="32">32</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="33">
+                                    <label for="33">33</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="34">
+                                    <label for="34">34</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="35">
+                                    <label for="35">35</label>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <ol class="seats">
+                                <li class="seat">
+                                    <input type="checkbox" id="27">
+                                    <label for="27">27</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="28">
+                                    <label for="28">28</label>
+                                </li>
+                                <li class="gap">
+                                    <label></label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="29">
+                                    <label for="29">29</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="30">
+                                    <label for="30">30</label>
+                                </li>
+                            </ol>
+                        </li><li>
+                            <ol class="seats">
+                                <li class="seat">
+                                    <input type="checkbox" id="23">
+                                    <label for="23">23</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="24">
+                                    <label for="24">24</label>
+                                </li>
+                                <li class="gap">
+                                    <label></label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="25">
+                                    <label for="25">25</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="26">
+                                    <label for="26">26</label>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <ol class="seats">
+                                <li class="seat">
+                                    <input type="checkbox" id="19">
+                                    <label for="19">19</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="20">
+                                    <label for="20">20</label>
+                                </li>
+                                <li class="gap">
+                                    <label></label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="21">
+                                    <label for="21">21</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="22">
+                                    <label for="22">22</label>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <ol class="seats">
+                                <li class="seat">
+                                    <input type="checkbox" id="15">
+                                    <label for="15">15</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="16">
+                                    <label for="16">16</label>
+                                </li>
+                                <li class="gap">
+                                    <label></label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="17">
+                                    <label for="17">17</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="18">
+                                    <label for="18">18</label>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <ol class="seats">
+                                <li class="seat">
+                                    <input type="checkbox" id="11">
+                                    <label for="11">11</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="12">
+                                    <label for="12">12</label>
+                                </li>
+                                <li class="gap">
+                                    <label></label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="13">
+                                    <label for="13">13</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="14">
+                                    <label for="14">14</label>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <ol class="seats">
+                                <li class="seat">
+                                    <input type="checkbox" id="07">
+                                    <label for="07">7</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="08">
+                                    <label for="08">8</label>
+                                </li>
+                                <li class="gap">
+                                    <label></label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="09">
+                                    <label for="09">9</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="10">
+                                    <label for="10">10</label>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <ol class="seats">
+                                <li class="seat">
+                                    <input type="checkbox" id="03">
+                                    <label for="03">3</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="04">
+                                    <label for="04">4</label>
+                                </li>
+                                <li class="gap">
+                                    <label></label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="05">
+                                    <label for="05">5</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="06">
+                                    <label for="06">6</label>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <ol class="seats">
+                                <li class="seat">
+                                    <input type="checkbox" id="01">
+                                    <label for="01">1</label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="02">
+                                    <label for="02">2</label>
+                                </li>
+                                <li class="gap">
+                                    <label></label>
+                                </li>
+                                <li class="gap">
+                                    <label></label>
+                                </li>
+                                <li class="seat">
+                                    <input type="checkbox" id="36">
+                                    <label for="36">36</label>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+                <button type="submit" class="btn" >Continue for payment</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

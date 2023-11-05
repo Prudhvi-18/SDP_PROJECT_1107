@@ -1,0 +1,15 @@
+<!-- ticket.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticket</title>
+</head>
+<body>
+    <h1>{{ ticket.event_name }}</h1>
+    <p>Customer: {{ ticket.customer_name }}</p>
+    <p>Ticket ID: {{ ticket.ticket_id }}</p>
+    <!-- Add any other relevant information here -->
+<a href="{% url 'download_ticket' ticket.ticket_id %}">Download Ticket</a>
+</body>
+</html>
